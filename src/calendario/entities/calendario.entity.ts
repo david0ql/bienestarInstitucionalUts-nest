@@ -3,8 +3,8 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 @Entity()
 export class Calendario {
 
-  @PrimaryGeneratedColumn()
-  idCita: number;
+  @PrimaryGeneratedColumn('uuid')
+  idCita: string;
 
   @Column()
   idFranja: number;

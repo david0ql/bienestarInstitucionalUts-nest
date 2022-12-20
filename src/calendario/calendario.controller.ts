@@ -1,7 +1,6 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, ParseUUIDPipe } from '@nestjs/common';
 import { CalendarioService } from './calendario.service';
 import { CreateCalendarioDto } from './dto/create-calendario.dto';
-import { UpdateCalendarioDto } from './dto/update-calendario.dto';
 
 @Controller('calendario')
 export class CalendarioController {
@@ -12,23 +11,13 @@ export class CalendarioController {
     return this.calendarioService.create(createCalendarioDto);
   }
 
-  @Get()
-  findAll() {
-    return this.calendarioService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.calendarioService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCalendarioDto: UpdateCalendarioDto) {
-    return this.calendarioService.update(+id, updateCalendarioDto);
+  @Get(':correoProfesional')
+  findAll(@Param('correoProfesional') correoProfesional: string) {
+    return this.calendarioService.findAll(correoProfesional);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.calendarioService.remove(+id);
+    return this.calendarioService.remove(id);
   }
 }

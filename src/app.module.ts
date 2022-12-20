@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CalendarioModule } from './calendario/calendario.module';
 import { FranjaModule } from './franja/franja.module';
+import { Calendario } from './calendario/entities/calendario.entity';
 
 @Module({
   imports: [
@@ -13,7 +14,7 @@ import { FranjaModule } from './franja/franja.module';
       username: 'root',
       password: 'root',
       database: 'bienestar',
-      entities: [],
+      entities: [Calendario],
       synchronize: true,
     }),
     FranjaModule,],
